@@ -1,41 +1,25 @@
 window.onload = function () {
-
-    console.log(111);
+    var input = document.getElementById('input');
     var svg = Snap('#svg');
+    var line = svg.select('#line');
+    var circ = svg.select('#circ');
+    var text = svg.select('#text');
 
-    document.getElementById('input').addEventListener('click', xxx);
-    document.getElementById('input').addEventListener('keyup', xxx);
-
-    function xxx() {
-        setAngle(document.getElementById('input').value);
-    }
+    ['click', 'keyup'].forEach(function (type) {
+        input.addEventListener(type, function () {
+            setAngle(input.value);
+        });
+    });
 
     svg.mousedown(function (e) {
         var angle = calcAngle(e.offsetX - svg.node.clientWidth / 2, svg.node.clientHeight / 2 - e.offsetY);
         setAngle(angle);
-        $('#input').val(angle);
-    });
-
-    var line = svg.line(12, 12, 12, 12);
-    var circ = svg.circle(12, 12, 0.5);
-    var text = svg.text(12, 12, '0');
-
-    line.attr({
-        class: 'main-line'
-    });
-
-    text.attr({
-        class: 'main-text'
-    });
-
-    circ.attr({
-        class: 'main-circ'
+        input.value = angle;
     });
 
     function setAngle(angle) {
-        console.log(angle);
-        var lx = 12 + 100 * Math.cos(angle * Math.PI / 180);
-        var ly = 12 - 100 * Math.sin(angle * Math.PI / 180);
+        var lx = 12 + 12 * Math.cos(angle * Math.PI / 180);
+        var ly = 12 - 12 * Math.sin(angle * Math.PI / 180);
         var x = 12 + 11 * Math.cos(angle * Math.PI / 180);
         var y = 12 - 11 * Math.sin(angle * Math.PI / 180);
 
@@ -48,6 +32,5 @@ window.onload = function () {
     function calcAngle(x, y) {
         var angle = Math.atan2(y, x) * 180 / Math.PI | 0;
         return angle < 0 ? 360 + angle : angle;
-        // return angle;
     }
-}
+};

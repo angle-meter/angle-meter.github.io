@@ -12,12 +12,13 @@
 
     <link rel="stylesheet" type="text/css" href="styles.css?20190207"/>
     <script src="scripts.js?20190207"></script>
+
 </head>
 <body>
 
 <div style="width: 100%;    height: 100%; display: flex;   align-items: center;  justify-content: center;">
     <div id="container">
-        <svg id="svg" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="svg" viewBox="0 0 24 24">
 
             <style>
                 .supp-line {
@@ -50,7 +51,7 @@
                 .main-circ {
                     fill: white;
                     stroke: darkslateblue;
-                    stroke-width: 0.1px;
+                    stroke-width: 0.05px;
                 }
 
             </style>
@@ -77,6 +78,12 @@
 
 
             <line class="main-line" x1="12" y1="12" x2="22" y2="12"/>
+
+            <line class="main-line" x1="12" y1="12" x2="22" y2="12" id="line"/>
+
+            <circle class="main-circ" cx="12" cy="12" r="0.5" id="circ"/>
+
+            <text class="main-text" x="12" y="12" id="text">0</text>
         </svg>
 
         <input id="input" type="number" value="10">
