@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angle meter online</title>
+    <meta name="description" content="Online angle measurement tool">
+
+    <meta name="keywords" content="angle, degree, meter, measure, online">
+    <meta name="author" content="Xantorohara"/>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="styles.css?20190207"/>
+    <script src="scripts.js?20190207"></script>
+</head>
+<body>
+
+<div style="width: 100%;    height: 100%; display: flex;   align-items: center;  justify-content: center;">
+    <div id="container">
+        <svg id="svg" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
+
+            <style>
+                .supp-line {
+                    fill: none;
+                    stroke: #808080;
+                    stroke-width: 0.02px;
+                }
+
+                .main-line {
+                    fill: none;
+                    stroke: darkslateblue;
+                    stroke-width: 0.1px;
+                }
+
+                .supp-text {
+                    margin: 1px;
+                    font-size: 0.5px;
+                    font-family: monospace;
+                    fill: #808080;
+                }
+
+                .main-text {
+                    font-size: 0.5px;
+                    font-family: monospace;
+                    fill: darkslateblue;
+                    alignment-baseline: middle;
+                    text-anchor: middle;
+                }
+
+                .main-circ {
+                    fill: white;
+                    stroke: darkslateblue;
+                    stroke-width: 0.1px;
+                }
+
+            </style>
+
+            <circle class="supp-line" cx="12" cy="12" r="10"/>
+
+            <line class="supp-line" x1="2" y1="12" x2="22" y2="12"/>
+            <line class="supp-line" x1="12" y1="2" x2="12" y2="22"/>
+            <line class="supp-line" x1="4" y1="4" x2="20" y2="20"/>
+
+            <line class="supp-line" x1="4" y1="20" x2="20" y2="4"/>
+
+            <text class="supp-text" x="22.5" y="12" text-anchor="start" alignment-baseline="middle">0/360</text>
+            <text class="supp-text" x="1.5" y="12" text-anchor="end" alignment-baseline="middle">180</text>
+
+            <text class="supp-text" x="20.5" y="3.5" text-anchor="start" alignment-baseline="baseline">45</text>
+            <text class="supp-text" x="3.5" y="3.5" text-anchor="end" alignment-baseline="baseline">135</text>
+
+            <text class="supp-text" x="3.5" y="20.5" text-anchor="end" alignment-baseline="mathematical">225</text>
+            <text class="supp-text" x="20.5" y="20.5" text-anchor="start" alignment-baseline="mathematical">315</text>
+
+            <text class="supp-text" x="12" y="1.5" text-anchor="middle" alignment-baseline="baseline">90</text>
+            <text class="supp-text" x="12" y="22.5" text-anchor="middle" alignment-baseline="mathematical">270</text>
+
+
+            <line class="main-line" x1="12" y1="12" x2="22" y2="12"/>
+        </svg>
+
+        <input id="input" type="number" value="10">
+    </div>
+</div>
+<div style="text-align: center">
+    &copy; Xantorohara 2018
+</div>
+</body>
+</html>
