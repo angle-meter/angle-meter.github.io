@@ -3,14 +3,17 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
-    outline: none;
+    font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+
+#input-panel {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
 }
 
 #input {
     margin: 0;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
     border: solid 1px #CCC;
     border-radius: 6px;
     padding: 2px;
