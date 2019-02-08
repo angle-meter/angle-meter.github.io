@@ -37,5 +37,5 @@ window.onload = function () {
         return angle < 0 ? 360 + angle : angle;
     }
 
-    // animateAngle(Math.random() * 360 | 0);
+     animateAngle(Math.random() * 360 | 0);
 };
