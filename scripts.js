@@ -7,17 +7,20 @@ window.onload = function () {
 
     ['click', 'keyup'].forEach(function (type) {
         input.addEventListener(type, function () {
-            setAngle(input.value);
+            animateAngle(input.value);
         });
     });
 
     svg.mousedown(function (e) {
-        var angle = calcAngle(e.offsetX - svg.node.clientWidth / 2, svg.node.clientHeight / 2 - e.offsetY);
-        setAngle(angle);
-        input.value = angle;
+        setAngle(calcAngle(e.offsetX - svg.node.clientWidth / 2, svg.node.clientHeight / 2 - e.offsetY));
     });
 
     function setAngle(angle) {
+        input.value = angle;
+        animateAngle(angle);
+    }
+
+    function animateAngle(angle) {
         var lx = 12 + 12 * Math.cos(angle * Math.PI / 180);
         var ly = 12 - 12 * Math.sin(angle * Math.PI / 180);
         var x = 12 + 11 * Math.cos(angle * Math.PI / 180);
@@ -33,4 +36,6 @@ window.onload = function () {
         var angle = Math.atan2(y, x) * 180 / Math.PI | 0;
         return angle < 0 ? 360 + angle : angle;
     }
+
+    // animateAngle(Math.random() * 360 | 0);
 };
