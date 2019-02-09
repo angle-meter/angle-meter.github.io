@@ -6,21 +6,35 @@ html, body {
     font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
 }
 
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #input-panel {
     position: absolute;
-    bottom: 10px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    top: 10px;
     left: 10px;
+}
+
+#copy-panel {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
 }
 
 #input {
     margin: 0;
     border: solid 1px #CCC;
     border-radius: 6px;
-    padding: 2px;
+    padding: 5px;
     width: 50px;
 }
 
-#container {
+#svg-container {
     width: 90%;
     height: 90%;
     position: relative;
