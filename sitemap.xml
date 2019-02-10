@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-        xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <url>
         <loc>https://angle-meter.github.io/</loc>
-        <lastmod>2019-02-08T18:11:31+00:00</lastmod>
+        <xhtml:link rel="alternate" hreflang="en" href="https://angle-meter.github.io/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://angle-meter.github.io/ru/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://angle-meter.github.io/fr/"/>
     </url>
-
-
+    <url>
+        <loc>https://angle-meter.github.io/ru/</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://angle-meter.github.io/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://angle-meter.github.io/ru/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://angle-meter.github.io/fr/"/>
+    </url>
+    <url>
+        <loc>https://angle-meter.github.io/fr/</loc>
+        <xhtml:link rel="alternate" hreflang="en" href="https://angle-meter.github.io/"/>
+        <xhtml:link rel="alternate" hreflang="ru" href="https://angle-meter.github.io/ru/"/>
+        <xhtml:link rel="alternate" hreflang="fr" href="https://angle-meter.github.io/fr/"/>
+    </url>
 </urlset>
+
+
