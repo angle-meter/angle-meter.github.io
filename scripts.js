@@ -1,5 +1,5 @@
 window.onload = function () {
-    var svg = Snap('svg');
+    var svg = Snap('#svg');
 
     var SIZE = svg.attr('viewBox').width;
     var CENTER = SIZE / 2;
