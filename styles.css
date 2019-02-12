@@ -11,10 +11,22 @@ html, body {
 }
 
 body {
-    padding: 5vh 5vw;
-    box-sizing: border-box;
-    position: relative;
-    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    right: 1rem;
+}
+
+footer {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
 }
 
 #title {
@@ -43,8 +55,8 @@ body {
 }
 
 #svg-container {
-    width: 90vw;
-    height: 90vh;
+    width: 90%;
+    height: 90%;
     position: relative;
     border: solid 1px #CCC;
     border-radius: 12px;
