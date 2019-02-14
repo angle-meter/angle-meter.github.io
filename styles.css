@@ -15,21 +15,7 @@ body {
     align-items: center;
     justify-content: center;
     min-width: 720px;
-    min-height: 720px;
-}
-
-header {
-    position: absolute;
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
-}
-
-footer {
-    position: absolute;
-    bottom: 1rem;
-    left: 1rem;
-    right: 1rem;
+    min-height: 480px;
 }
 
 #title {
@@ -81,7 +67,6 @@ footer {
     box-shadow: 1px 1px 100px #CCC;
     background: url("logo.png") no-repeat center;
     background-size: contain;
-    position: relative;
 }
 
 .svg {
