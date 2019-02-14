@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
     <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -31,16 +31,18 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
 
-    <link rel="stylesheet" type="text/css" href="/styles.css?20190212"/>
-    <script src="/scripts.js?20190211"></script>
+    <link rel="stylesheet" type="text/css" href="/styles.css?20190214"/>
+    <script src="/scripts.js?20190214"></script>
 </head>
 
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "url": "https://angle-meter.github.io/",
-        "logo": "https://angle-meter.github.io/logo.png"
+        "@type": "SoftwareApplication",
+        "name": "Angle meter",
+        "applicationCategory": "UtilitiesApplication",
+        "screenshot ": "https://angle-meter.github.io/screenshot.png",
+        "image ": "https://angle-meter.github.io/logo.png"
     }
 </script>
 
@@ -115,7 +117,7 @@
 
     </svg>
 
-    <header style="position: absolute; top: 1rem; left: 1rem; right: 1rem">
+    <header>
         <h1 id="title">
             Angle mètre
         </h1>
@@ -127,7 +129,12 @@
         </p>
     </header>
 
-    <footer style="position: absolute; bottom: 1rem; right: 1rem">
+    <footer>
+        <p id="info-panel">
+            Mesurez les angles droits, aigus et obtus
+            <br/>
+            en ligne de 0 à 360 °.
+        </p>
         <p id="copy-panel">
             &copy; 2019 <a href="mailto:xantorohara@gmail.com">Xantorohara</a>
             <a href="/">EN</a>
