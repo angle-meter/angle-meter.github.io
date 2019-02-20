@@ -14,6 +14,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
 }
 
 #title {
@@ -44,12 +45,16 @@ body {
 }
 
 #banner {
-    width: 25%;
-    height: 25%;
+    width: 322px;
+    height: 52px;
     /*border: solid red 1px;*/
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+}
+
+#copy-panel {
+    text-align: center;
 }
 
 #input {
