@@ -155,5 +155,5 @@ window.onload = function () {
     addMouseListener();
     addInputListener();
     setAngle(Math.round(Math.random() * 360));
-    // setAngle(225);
+    // setAngle(330);
 };

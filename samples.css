@@ -1,0 +1,26 @@
+.svg {
+    width: 200px;
+    height: 200px;
+    box-sizing: border-box;
+    border: solid #FEFEFE 1px;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.svg-supp-line {
+    stroke: #999;
+    stroke-width: 0.1px;
+}
+
+.svg-supp-text {
+    /*display: none;*/
+}
+
+.svg-line {
+    stroke: #333;
+    stroke-width: 0.5px;
+}
+
+.svg-text {
+    /*display: none;*/
+}
