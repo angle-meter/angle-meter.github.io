@@ -4,5 +4,5 @@
 
 Just measure angles using web browser.
 
-![Screenshot](screenshot.png)
+![Screenshot](img/screenshot.png)
 

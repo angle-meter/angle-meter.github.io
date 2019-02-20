@@ -45,13 +45,12 @@
         "@type": "SoftwareApplication",
         "name": "Angle meter",
         "applicationCategory": "UtilitiesApplication",
-        "screenshot ": "https://angle-meter.github.io/screenshot.png",
-        "image ": "https://angle-meter.github.io/logo.png"
+        "screenshot ": "https://angle-meter.github.io/img/screenshot.png",
+        "image ": "https://angle-meter.github.io/img/logo.png"
     }
 </script>
 
 <body>
-
 
 <div id="svg-container">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="svg" viewBox="0 0 40 40" class="svg noselect">
@@ -135,28 +134,131 @@
     <p id="info-panel">
         Measure right, acute and obtuse angles
         <br/>
-        in degrees from 0° to 360° free online.
+        in degrees from 0° to 360° online.
     </p>
 
-    <p id="banner">
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- angle-meter-320x50 -->
-        <ins class="adsbygoogle"
-             style="display:inline-block;width:320px;height:50px"
-             data-ad-client="ca-pub-6112298272240282"
-             data-ad-slot="3106347556"></ins>
-        <script>
-            (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </p>
+    <!--<p id="banner">-->
+        <!--<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>-->
+        <!--&lt;!&ndash; angle-meter-320x50 &ndash;&gt;-->
+        <!--<ins class="adsbygoogle"-->
+             <!--style="display:inline-block;width:320px;height:50px"-->
+             <!--data-ad-client="ca-pub-6112298272240282"-->
+             <!--data-ad-slot="3106347556"></ins>-->
+        <!--<script>-->
+            <!--(adsbygoogle = window.adsbygoogle || []).push({});-->
+        <!--</script>-->
+    <!--</p>-->
 
 </div>
 
+
 <p id="copy-panel">
     &copy; 2019 <a href="mailto:xantorohara@gmail.com">Xantorohara</a>
-    <a href="/">EN</a>
-    <a href="/ru/">RU</a>
-    <a href="/fr/">FR</a>
 </p>
+
+<style>
+    h3, p {
+        padding: 0;
+        margin: 0;
+    }
+
+    .row {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .sample {
+        padding: 10px;
+        flex-grow: 1;
+        flex-basis: 0;
+        margin: 10px;
+        width: 250px;
+        text-align: center;
+        border: solid 1px #DDD;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px #EEE;
+
+    }
+
+    .sample img {
+        width: 200px;
+        height: 200px;
+    }
+</style>
+
+
+<h2>Online angle meter</h2>
+Sometimes you need to measure angles, but you don't have a protractor at hand.
+<br/>
+A protractor is a measuring tool, typically piece of transparent plastic, for measuring angles.
+<br/>
+Like this:
+<br/>
+<div style="text-align: center;">
+    <img src="protractor.jpg">
+</div>
+
+<br/>
+On the other hand, if you are reading this - you definitely have desktop, laptop or mobile device with a web browser.
+<br/>
+So, why not to use its display to measure something?
+<br/>
+You don't have to install the app on a smartphone, this online tool just works in the browser.
+<br/>
+We made it for You!
+
+
+<h2>Types of angles</h2>
+<div id="container">
+    <div class="row">
+        <div class="sample">
+            <h3>Zero angle</h3>
+            <img src="test.svg">
+            <p>An angle equal to 0°</p>
+        </div>
+        <div class="sample">
+            <h3>Right angle</h3>
+            <img src="test.svg">
+            <p>An angle equal to 90° (it is formed by two perpendicular lines)</p>
+        </div>
+        <div class="sample">
+            <h3>Straight angle</h3>
+            <img src="test.svg">
+            <p>An angle equal to 180° (it is just a line)</p>
+        </div>
+        <div class="sample">
+            <h3>Full angle</h3>
+            <img src="test.svg">
+            <p>An angle equal to 360° (or full turn)</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="sample">
+            <h3>Acute angle</h3>
+            <img src="test.svg">
+            <p>An angle between 0° and 90° (larger than the Zero, but smaller than the Right angle)</p>
+        </div>
+        <div class="sample">
+            <h3>Obtuse angle</h3>
+            <img src="test.svg">
+            <p>An angle between 90° and 180° (larger than the Right, but smaller than the Straight angle)</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="sample">
+            <h3>Reflex angle</h3>
+            <img src="test.svg">
+            <p>
+                An angle between 180° and 360° (larger than the Straight, but smaller than the Full angle)
+                <br/>
+                Sometimes it is simpler to work with negative angle instead of Reflex angle (see the angle in red).
+            </p>
+        </div>
+    </div>
+</div>
+
+<p>You may use it for free for development, education or other purposes</p>
+
 </body>
 </html>
