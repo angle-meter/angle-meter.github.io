@@ -52,6 +52,17 @@ html, body {
     width: 50px;
 }
 
+#banner {
+    width: 322px;
+    height: 52px;
+    border: solid red 1px;
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+}
+
+
+
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -60,6 +71,7 @@ html, body {
     user-select: none;
     cursor: default;
 }
+
 
 @media only screen and (max-width: 600px) and (max-height: 600px) {
     #title,
@@ -83,4 +95,27 @@ h3 {
 p {
     font-size: 1rem;
     line-height: 1.5rem;
+}
+
+.samples-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sample {
+    padding: 10px;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 10px;
+    width: 250px;
+    text-align: center;
+    border: solid 1px #DDD;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #EEE;
+}
+
+.sample img {
+    width: 200px;
+    height: 200px;
 }
