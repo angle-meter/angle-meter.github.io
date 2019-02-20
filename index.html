@@ -63,68 +63,32 @@
     </div>
 
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="svg" viewBox="0 0 40 40" class="svg noselect">
-        <style>
-            .supp-line {
-                fill: none;
-                stroke: #666;
-                stroke-width: 0.02px;
-            }
+        <circle class="svg-supp-line" cx="20" cy="20" r="17"></circle>
+        <line class="svg-supp-line" x1="2" y1="20" x2="38" y2="20"></line>
+        <line class="svg-supp-line" x1="20" y1="2" x2="20" y2="38"></line>
+        <line class="svg-supp-line" x1="5" y1="5" x2="35" y2="35"></line>
+        <line class="svg-supp-line" x1="5" y1="35" x2="35" y2="5"></line>
+        <text class="svg-supp-text" x="36" y="19" text-anchor="end">0</text>
+        <text class="svg-supp-text" x="36" y="21" text-anchor="end">360</text>
+        <text class="svg-supp-text" x="21" y="4" text-anchor="start">90</text>
+        <text class="svg-supp-text" x="4" y="19" text-anchor="start">180</text>
+        <text class="svg-supp-text" x="19" y="36" text-anchor="end">270</text>
+        <text class="svg-supp-text" x="32" y="10" text-anchor="middle">45</text>
+        <text class="svg-supp-text" x="9" y="8" text-anchor="start">135</text>
+        <text class="svg-supp-text" x="8" y="30" text-anchor="middle">225</text>
+        <text class="svg-supp-text" x="31" y="32" text-anchor="end">315</text>
 
-            .supp-text {
-                font-size: 1px;
-                font-family: monospace;
-                fill: #666;
-                alignment-baseline: middle;
-            }
+        <line class="svg-line" x1="20" y1="20" x2="38" y2="20"></line>
 
-            .a-line {
-                fill: none;
-                stroke: #333;
-                stroke-width: 0.1px;
-            }
+        <line id="pointerLine" class="svg-line" x1="20" y1="20" x2="20" y2="20"></line>
 
-            .a-text {
-                font-size: 1px;
-                font-family: monospace;
-                fill: #333;
-                alignment-baseline: middle;
-                text-anchor: middle;
-            }
+        <path id="pointerMarker" class="svg-path" fill="#33CC33" d="M20,20"></path>
+        <path id="arc" class="svg-path" fill="#0080FF" d="M20,20"></path>
+        <path id="oppositeArc" class="svg-path" fill="#FF0000" d="M20,20"></path>
 
-            .a-path {
-                stroke: #333;
-                stroke-width: 0.05px;
-                fill-opacity: 0.5;
-            }
-
-        </style>
-
-        <circle class="supp-line" cx="20" cy="20" r="17"></circle>
-        <line class="supp-line" x1="2" y1="20" x2="38" y2="20"></line>
-        <line class="supp-line" x1="20" y1="2" x2="20" y2="38"></line>
-        <line class="supp-line" x1="5" y1="5" x2="35" y2="35"></line>
-        <line class="supp-line" x1="5" y1="35" x2="35" y2="5"></line>
-        <text class="supp-text" x="36" y="19" text-anchor="end">0</text>
-        <text class="supp-text" x="36" y="21" text-anchor="end">360</text>
-        <text class="supp-text" x="21" y="4" text-anchor="start">90</text>
-        <text class="supp-text" x="4" y="19" text-anchor="start">180</text>
-        <text class="supp-text" x="19" y="36" text-anchor="end">270</text>
-        <text class="supp-text" x="32" y="10" text-anchor="middle">45</text>
-        <text class="supp-text" x="9" y="8" text-anchor="start">135</text>
-        <text class="supp-text" x="8" y="30" text-anchor="middle">225</text>
-        <text class="supp-text" x="31" y="32" text-anchor="end">315</text>
-
-        <line class="a-line" x1="20" y1="20" x2="38" y2="20"></line>
-
-        <line id="pointerLine" class="a-line" x1="20" y1="20" x2="20" y2="20"></line>
-
-        <path id="pointerMarker" class="a-path" fill="#33CC33" d="M20,20"></path>
-        <path id="arc" class="a-path" fill="#0080FF" d="M20,20"></path>
-        <path id="oppositeArc" class="a-path" fill="#FF0000" d="M20,20"></path>
-
-        <text id="pointerText" class="a-text" x="20" y="20"></text>
-        <text id="arcText" class="a-text" x="20" y="20" style="fill:white"></text>
-        <text id="oppositeArcText" class="a-text" x="20" y="20" style="fill:white"></text>
+        <text id="pointerText" class="svg-text" x="20" y="20"></text>
+        <text id="arcText" class="svg-text" x="20" y="20" style="fill:white"></text>
+        <text id="oppositeArcText" class="svg-text" x="20" y="20" style="fill:white"></text>
     </svg>
 
     <div id="banner"></div>

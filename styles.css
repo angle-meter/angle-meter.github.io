@@ -17,11 +17,14 @@ html, body {
     height: 100%;
     overflow: hidden;
     position: relative;
+    text-align: center;
 }
 
 .svg {
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
+    width: 320px;
+    height: 320px;
     background-color: white;
     border-radius: 12px;
     border: solid 1px #CCC;
@@ -55,13 +58,11 @@ html, body {
 #banner {
     width: 322px;
     height: 52px;
-    border: solid red 1px;
+    /*border: solid red 1px;*/
     position: absolute;
     bottom: 30px;
     right: 30px;
 }
-
-
 
 .noselect {
     -webkit-touch-callout: none;
@@ -72,12 +73,45 @@ html, body {
     cursor: default;
 }
 
-
 @media only screen and (max-width: 600px) and (max-height: 600px) {
     #title,
     #input-panel {
         display: none;
     }
+}
+
+/*SVG*/
+.svg-supp-line {
+    fill: none;
+    stroke: #666;
+    stroke-width: 0.02px;
+}
+
+.svg-supp-text {
+    font-size: 1px;
+    font-family: monospace;
+    fill: #666;
+    alignment-baseline: middle;
+}
+
+.svg-line {
+    fill: none;
+    stroke: #333;
+    stroke-width: 0.1px;
+}
+
+.svg-text {
+    font-size: 1px;
+    font-family: monospace;
+    fill: #333;
+    alignment-baseline: middle;
+    text-anchor: middle;
+}
+
+.svg-path {
+    stroke: #333;
+    stroke-width: 0.05px;
+    fill-opacity: 0.5;
 }
 
 /*Content*/
