@@ -22,14 +22,14 @@
     }
 
     .arc:nth-child(even) {
-        fill: #FFF;
-        stroke: #999;
-    }
-
-    .arc:nth-child(odd) {
         fill: #08F;
         stroke: #333;
         opacity: 0.5;
+    }
+
+    .arc:nth-child(odd) {
+        fill: #FFF;
+        stroke: #999;
     }
 
     .text {
@@ -68,26 +68,28 @@
 
 <body>
 
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 99">
+<svg1 version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 99">
     <circle class="line" cx="50" cy="50" r="45"></circle>
 
     <line class="line" x1="0" y1="50" x2="99" y2="50"></line>
     <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(90 50 50)"></line>
 
-    <script>
-        for (var i = 0; i < 4; i++) {
-            document.write(arcPaths(90, 50, 30, i * 90));
-        }
-    </script>
+    <g>
+        <script>
+            for (var i = 0; i < 4; i++) {
+                document.write(arcPaths(90, 50, 30, i * 90));
+            }
+        </script>
+    </g>
 
     <text class="text" x="50" y="15" transform="rotate(45 50 50)">Q1</text>
     <text class="text" x="50" y="15" transform="rotate(-45 50 50)">Q2</text>
     <text class="text" x="50" y="91" transform="rotate(45 50 50)">Q3</text>
     <text class="text" x="50" y="91" transform="rotate(-45 50 50)">Q4</text>
 
-</svg>
+</svg1>
 
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 99">
+<svg1 version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 99">
 
     <circle class="line" cx="50" cy="50" r="45"></circle>
 
@@ -95,11 +97,13 @@
     <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(60 50 50)"></line>
     <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(120 50 50)"></line>
 
-    <script>
-        for (var i = 0; i < 6; i++) {
-            document.write(arcPaths(60, 50, 30, 15 - i * 60));
-        }
-    </script>
+    <g>
+        <script>
+            for (var i = 0; i < 6; i++) {
+                document.write(arcPaths(60, 50, 30, i * 60 + 15));
+            }
+        </script>
+    </g>
 
     <text class="text" x="50" y="14" transform="rotate(60 50 50)">1</text>
     <text class="text" x="50" y="14" transform="rotate(0 50 50)">2</text>
@@ -109,7 +113,33 @@
     <text class="text" x="50" y="92" transform="rotate(0 50 50)">5</text>
     <text class="text" x="50" y="92" transform="rotate(-60 50 50)">6</text>
 
-</svg>
+</svg1>
+
+<svg1 version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 99">
+    <circle class="line" cx="50" cy="50" r="45"></circle>
+
+    <line class="line" x1="0" y1="50" x2="99" y2="50"></line>
+    <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(45 50 50)"></line>
+    <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(90 50 50)"></line>
+    <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(135 50 50)"></line>
+
+    <g>
+        <script>
+            for (var i = 0; i < 8; i++) {
+                document.write(arcPaths(45, 50, 30, i * 45 + 22.5));
+            }
+        </script>
+    </g>
+    <text class="text" x="50" y="15" transform="rotate(67 50 50)">1</text>
+    <text class="text" x="50" y="15" transform="rotate(23 50 50)">2</text>
+    <text class="text" x="50" y="15" transform="rotate(-23 50 50)">3</text>
+    <text class="text" x="50" y="15" transform="rotate(-67 50 50)">4</text>
+    <text class="text" x="50" y="91" transform="rotate(67 50 50)">5</text>
+    <text class="text" x="50" y="91" transform="rotate(23 50 50)">6</text>
+    <text class="text" x="50" y="91" transform="rotate(-23 50 50)">7</text>
+    <text class="text" x="50" y="91" transform="rotate(-67 50 50)">8</text>
+
+</svg1>
 
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 99">
 
@@ -122,15 +152,17 @@
     <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(-30 50 50)"></line>
     <line class="line" x1="0" y1="50" x2="99" y2="50" transform="rotate(-60 50 50)"></line>
 
-    <script>
-        for (var i = 0; i < 12; i++) {
-            document.write(arcPaths(30, 50, 30, -i * 30));
-        }
-    </script>
+    <g>
+        <script>
+            for (var i = 0; i < 12; i++) {
+                document.write(arcPaths(30, 50, 30, i * 30 - 30));
+            }
+        </script>
+    </g>
 
     <text class="text" x="50" y="14" transform="rotate(30 50 50)">1</text>
     <text class="text" x="50" y="14" transform="rotate(60 50 50)">2</text>
-    <text class="text" x="90" y="53" font-weight="bold" >3</text>
+    <text class="text" x="90" y="53" font-weight="bold">3</text>
 
 
     <text class="text" x="50" y="92" transform="rotate(-60 50 50)">4</text>
@@ -147,6 +179,34 @@
 
 </svg>
 
-<br/>
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 99 99">
+
+    <circle class="line" cx="50" cy="50" r="45"></circle>
+
+    <style>
+        .line1 {
+            stroke-width: 0.1px;
+        }
+
+        .line1:nth-child(even) {
+            stroke: #FFF;
+        }
+
+        .line1:nth-child(odd) {
+            stroke: #000;
+        }
+    </style>
+    <g>
+        <script><![CDATA[
+        for (var i = 0; i < 180; i++) {
+            document.write('<line class="line1" x1="1" y1="50" x2="99" y2="50" transform="rotate(' + -i + ' 50 50)"></line>');
+        }
+        ]]></script>
+    </g>
+
+    <circle class="line" cx="50" cy="50" r="20"></circle>
+
+    <text class="text" x="50" y="53">1..360°</text>
+</svg>
 </body>
 </html>

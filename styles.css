@@ -122,6 +122,7 @@ h2 {
 h3 {
     font-size: 1rem;
     line-height: 1rem;
+    margin-bottom: 1rem;
 }
 
 p {
@@ -137,7 +138,7 @@ p {
 
 .sample {
     padding: 10px;
-    flex-grow: 1;
+    flex-grow: 0.9;
     flex-basis: 0;
     margin: 10px;
     width: 250px;
@@ -146,8 +147,3 @@ p {
     border-radius: 5px;
     box-shadow: 1px 1px 10px #EEE;
 }
-
-/*.sample img {*/
-    /*width: 200px;*/
-    /*height: 200px;*/
-/*}*/
