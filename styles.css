@@ -140,6 +140,7 @@ p {
 
 .product {
     max-width: 50%;
+    margin: 0 1rem;
     float: right;
 }
 
