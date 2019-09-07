@@ -156,8 +156,13 @@ p {
     flex-basis: 0;
     margin: 10px;
     width: 250px;
+    min-width: 250px;
     text-align: center;
     border: solid 1px #DDD;
     border-radius: 5px;
     box-shadow: 1px 1px 10px #EEE;
+}
+
+.sample img {
+    max-width: 100%;
 }
