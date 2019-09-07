@@ -78,40 +78,6 @@ html, body {
     }
 }
 
-/*SVG*/
-.svg-supp-line {
-    fill: none;
-    stroke: #666;
-    stroke-width: 0.02px;
-}
-
-.svg-supp-text {
-    font-size: 1px;
-    font-family: monospace;
-    fill: #666;
-    alignment-baseline: middle;
-}
-
-.svg-line {
-    fill: none;
-    stroke: #333;
-    stroke-width: 0.1px;
-}
-
-.svg-text {
-    font-size: 1px;
-    font-family: monospace;
-    fill: #333;
-    alignment-baseline: middle;
-    text-anchor: middle;
-}
-
-.svg-path {
-    stroke: #333;
-    stroke-width: 0.05px;
-    fill-opacity: 0.5;
-}
-
 /*Content*/
 h2 {
     font-size: 1.5rem;
