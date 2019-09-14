@@ -58,8 +58,8 @@
             return {x, y}
         }
 
-        let s1 = {x: 0, y: 0, x0: 50, y0: 10};
-        let s2 = {x: 0, y: 0, x0: 50, y0: 10};
+        let s1 = {x1: 50, y1: 10, x2: 0, y2: 0};
+        let s2 = {x1: 50, y1: 10, x2: 0, y2: 0, };
         let r1 = {x: 0, y: 0, x0: 50, y0: 90};
         let r2 = {x1: 0, y1: 0, x2: 50, y2: 90};
 
@@ -76,15 +76,15 @@
                 side0.setAttribute('x2', 10 * Math.cos(angle) + SIDE_CX);
                 side0.setAttribute('y2', 10 * Math.sin(angle) + SIDE_CY);
 
-                s1.x = SIDE_LEN * Math.cos(angle - a34) + s1.x0;
-                s1.y = SIDE_LEN * Math.sin(angle - a34) + s1.y0;
-                s2.x = SIDE_LEN * Math.cos(angle + a34) + s2.x0;
-                s2.y = SIDE_LEN * Math.sin(angle + a34) + s2.y0;
+                s1.x2 = SIDE_LEN * Math.cos(angle - a34) + s1.x1;
+                s1.y2 = SIDE_LEN * Math.sin(angle - a34) + s1.y1;
+                s2.x2 = SIDE_LEN * Math.cos(angle + a34) + s2.x1;
+                s2.y2 = SIDE_LEN * Math.sin(angle + a34) + s2.y1;
 
-                side1.setAttribute('x2', s1.x);
-                side1.setAttribute('y2', s1.y);
-                side2.setAttribute('x2', s2.x);
-                side2.setAttribute('y2', s2.y);
+                side1.setAttribute('x2', s1.x2);
+                side1.setAttribute('y2', s1.y2);
+                side2.setAttribute('x2', s2.x2);
+                side2.setAttribute('y2', s2.y2);
                 redraw(r1.x, r1.y)
             } else {
                 const rayAngle = Math.atan2(y - 90, x - SIDE_CX);
@@ -92,7 +92,7 @@
                 r1.x = 100 * Math.cos(rayAngle) + SIDE_CX;
                 r1.y = 100 * Math.sin(rayAngle) + 90;
 
-                let intersectS1R1 = intersect(s1.x0, s1.y0, s1.x, s1.y, r1.x0, r1.y0, r1.x, r1.y);
+                let intersectS1R1 = intersect(s1.x1, s1.y1, s1.x2, s1.y2, r1.x0, r1.y0, r1.x, r1.y);
 
                 if (intersectS1R1) {
                     ray1.setAttribute('x2', intersectS1R1.x);
@@ -117,7 +117,7 @@
 
                 } else {
 
-                    let temp2 = intersect(s2.x0, s2.y0, s2.x, s2.y, r1.x0, r1.y0, r1.x, r1.y);
+                    let temp2 = intersect(s2.x1, s2.y1, s2.x2, s2.y2, r1.x0, r1.y0, r1.x, r1.y);
                     if (temp2) {
                         ray1.setAttribute('x2', temp2.x);
                         ray1.setAttribute('y2', temp2.y);
