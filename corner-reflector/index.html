@@ -64,32 +64,30 @@
         let r2 = {x1: 0, y1: 0, x2: 50, y2: 90};
 
         let cornerAngle = Math.PI / 2;
-        const atan34 = 3 * Math.PI / 4;
-        const pid4 = Math.PI / 4;
+        const a34 = 3 * Math.PI / 4;
 
         function redraw(x, y) {
-            const atan = Math.atan2(y - SIDE_CY, x - SIDE_CX);
+            const angle = Math.atan2(y - SIDE_CY, x - SIDE_CX);
 
-            if (atan <= -Math.PI / 4 && atan >= -3 * Math.PI / 4) {
-                cornerAngle = atan;
+            if (angle <= -Math.PI / 4 && angle >= -3 * Math.PI / 4) {
+                // if (true) {
+                cornerAngle = angle;
 
-                side0.setAttribute('x2', 10 * Math.cos(atan) + SIDE_CX);
-                side0.setAttribute('y2', 10 * Math.sin(atan) + SIDE_CY);
+                side0.setAttribute('x2', 10 * Math.cos(angle) + SIDE_CX);
+                side0.setAttribute('y2', 10 * Math.sin(angle) + SIDE_CY);
 
-                s1.x = SIDE_LEN * Math.cos(atan + atan34) + s1.x0;
-                s1.y = SIDE_LEN * Math.sin(atan + atan34) + s1.y0;
-                s2.x = SIDE_LEN * Math.cos(atan - atan34) + s2.x0;
-                s2.y = SIDE_LEN * Math.sin(atan - atan34) + s2.y0;
+                s1.x = SIDE_LEN * Math.cos(angle - a34) + s1.x0;
+                s1.y = SIDE_LEN * Math.sin(angle - a34) + s1.y0;
+                s2.x = SIDE_LEN * Math.cos(angle + a34) + s2.x0;
+                s2.y = SIDE_LEN * Math.sin(angle + a34) + s2.y0;
 
                 side1.setAttribute('x2', s1.x);
                 side1.setAttribute('y2', s1.y);
                 side2.setAttribute('x2', s2.x);
                 side2.setAttribute('y2', s2.y);
-                //    redraw(r1.x, r1.y)
+                redraw(r1.x, r1.y)
             } else {
                 const rayAngle = Math.atan2(y - 90, x - SIDE_CX);
-
-                // console.log("RA", rayAngle, "CA", cornerAngle, "CA34", Math.PI + (cornerAngle - atan34) + Math.PI / 2);
 
                 r1.x = 100 * Math.cos(rayAngle) + SIDE_CX;
                 r1.y = 100 * Math.sin(rayAngle) + 90;
@@ -102,23 +100,33 @@
                     ray2.setAttribute('x1', temp1.x);
                     ray2.setAttribute('y1', temp1.y);
 
-                    console.log((Math.PI + (rayAngle + cornerAngle)));
-                    console.log(Math.PI / 2 - (pid4 - (rayAngle - cornerAngle)) * 2);
-                    // const angle = rayAngle + (Math.PI + (cornerAngle - atan34) + Math.PI / 2);
-                    const angle = rayAngle - Math.PI / 2 - ((Math.PI + (rayAngle + cornerAngle))) * 2;
+                    const a = rayAngle + Math.PI + (cornerAngle - a34 - rayAngle - Math.PI / 2) * 2;
 
-                    r2.x2 = 100 * Math.cos(angle) + temp1.x;
-                    r2.y2 = 100 * Math.sin(angle) + temp1.y;
+                    r2.x2 = 100 * Math.cos(a) + temp1.x;
+                    r2.y2 = 100 * Math.sin(a) + temp1.y;
 
                     ray2.setAttribute('x2', r2.x2);
                     ray2.setAttribute('y2', r2.y2);
 
                     //let intersectS1R2 = intersect(s1.x0, s1.y0, s1.x, s1.y, r1.x0, r1.y0, r1.x, r1.y);
                 } else {
+
                     let temp2 = intersect(s2.x0, s2.y0, s2.x, s2.y, r1.x0, r1.y0, r1.x, r1.y);
                     if (temp2) {
                         ray1.setAttribute('x2', temp2.x);
                         ray1.setAttribute('y2', temp2.y);
+                        ray2.setAttribute('x1', temp2.x);
+                        ray2.setAttribute('y1', temp2.y);
+
+                        const a = rayAngle + Math.PI + (cornerAngle + a34 - rayAngle - Math.PI / 2) * 2;
+
+                        console.log(rayAngle, cornerAngle + a34, a);
+
+                        r2.x2 = 100 * Math.cos(a) + temp2.x;
+                        r2.y2 = 100 * Math.sin(a) + temp2.y;
+
+                        ray2.setAttribute('x2', r2.x2);
+                        ray2.setAttribute('y2', r2.y2);
 
                     } else {
                         ray1.setAttribute('x2', r1.x);
@@ -126,6 +134,7 @@
                     }
                 }
             }
+
         }
 
         svg.addEventListener('mouseup', function (evt) {
@@ -146,7 +155,7 @@
             }
         );
 
-        redraw(50, 0);
+        redraw(46, 0);
 
     }
 </script>
