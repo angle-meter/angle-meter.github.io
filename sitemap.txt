@@ -1,1 +1,3 @@
 https://angle-meter.github.io
+https://angle-meter.github.io/angle-facts
+https://angle-meter.github.io/interesting-angles
