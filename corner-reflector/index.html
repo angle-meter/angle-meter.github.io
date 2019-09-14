@@ -22,7 +22,7 @@
     window.onload = function () {
         const SIDE_CX = 50;
         const SIDE_CY = 10;
-        const SIDE_LEN = 100;
+        const SIDE_LEN = 50;
 
         const svg = document.getElementById('svg');
         const side0 = document.getElementById('side0');
@@ -30,6 +30,7 @@
         const side2 = document.getElementById('side2');
         const ray1 = document.getElementById('ray1');
         const ray2 = document.getElementById('ray2');
+        const ray3 = document.getElementById('ray3');
 
         const point = svg.createSVGPoint();
 
@@ -58,10 +59,11 @@
             return {x, y}
         }
 
-        let s1 = {x1: 50, y1: 10, x2: 0, y2: 0};
-        let s2 = {x1: 50, y1: 10, x2: 0, y2: 0, };
-        let r1 = {x: 0, y: 0, x0: 50, y0: 90};
-        let r2 = {x1: 0, y1: 0, x2: 50, y2: 90};
+        const s1 = {x1: 50, y1: 10, x2: 0, y2: 0};
+        const s2 = {x1: 50, y1: 10, x2: 0, y2: 0,};
+        const r1 = {x1: 50, y1: 90, x2: 0, y2: 0};
+        const r2 = {x1: 0, y1: 0, x2: 0, y2: 0};
+        const r3 = {x1: 0, y1: 0, x2: 50, y2: 90};
 
         let cornerAngle = Math.PI / 2;
         const a34 = 3 * Math.PI / 4;
@@ -85,39 +87,50 @@
                 side1.setAttribute('y2', s1.y2);
                 side2.setAttribute('x2', s2.x2);
                 side2.setAttribute('y2', s2.y2);
-                redraw(r1.x, r1.y)
+                redraw(r1.x2, r1.y2)
             } else {
                 const rayAngle = Math.atan2(y - 90, x - SIDE_CX);
 
-                r1.x = 100 * Math.cos(rayAngle) + SIDE_CX;
-                r1.y = 100 * Math.sin(rayAngle) + 90;
+                r1.x2 = 100 * Math.cos(rayAngle) + r1.x1;
+                r1.y2 = 100 * Math.sin(rayAngle) + r1.y1;
 
-                let intersectS1R1 = intersect(s1.x1, s1.y1, s1.x2, s1.y2, r1.x0, r1.y0, r1.x, r1.y);
+                let intersectS1R1 = intersect(s1.x1, s1.y1, s1.x2, s1.y2, r1.x1, r1.y1, r1.x2, r1.y2);
 
                 if (intersectS1R1) {
-                    ray1.setAttribute('x2', intersectS1R1.x);
-                    ray1.setAttribute('y2', intersectS1R1.y);
-                    ray2.setAttribute('x1', intersectS1R1.x);
-                    ray2.setAttribute('y1', intersectS1R1.y);
+                    r2.x1 = r1.x2 = intersectS1R1.x;
+                    r2.y1 = r1.y2 = intersectS1R1.y;
 
                     const a = rayAngle + Math.PI + (cornerAngle - a34 - rayAngle - Math.PI / 2) * 2;
 
-                    r2.x2 = 100 * Math.cos(a) + intersectS1R1.x;
-                    r2.y2 = 100 * Math.sin(a) + intersectS1R1.y;
+                    r2.x2 = 100 * Math.cos(a) + r2.x1;
+                    r2.y2 = 100 * Math.sin(a) + r2.y1;
 
-                    // let intersectS2R2 = intersect(s2.x0, s2.y0, s2.x, s2.y, r2.x0, r2.y0, r2.x, r2.y);
+                    let intersectS2R2 = intersect(s2.x1, s2.y1, s2.x2, s2.y2, r2.x1, r2.y1, r2.x2, r2.y2);
 
-                    // if (intersectS2R2) {
-                    //     r2.x2 = intersectS2R2.x;
-                    //     r2.y2 = intersectS2R2.y;
-                    // }
+                    if (intersectS2R2) {
+                        r3.x2 = r1.x1;
+                        r3.y2 = r1.y1;
+                        r3.x1 = r2.x2 = intersectS2R2.x;
+                        r3.y1 = r2.y2 = intersectS2R2.y;
+                    } else {
+                        r3.x1 = r3.x2 = 0;
+                        r3.y1 = r3.y2 = 0;
+                    }
 
+                    ray1.setAttribute('x2', r1.x2);
+                    ray1.setAttribute('y2', r1.y2);
+                    ray2.setAttribute('x1', r2.x1);
+                    ray2.setAttribute('y1', r2.y1);
                     ray2.setAttribute('x2', r2.x2);
                     ray2.setAttribute('y2', r2.y2);
+                    ray3.setAttribute('x1', r3.x1);
+                    ray3.setAttribute('y1', r3.y1);
+                    ray3.setAttribute('x2', r3.x2);
+                    ray3.setAttribute('y2', r3.y2);
 
                 } else {
 
-                    let temp2 = intersect(s2.x1, s2.y1, s2.x2, s2.y2, r1.x0, r1.y0, r1.x, r1.y);
+                    let temp2 = intersect(s2.x1, s2.y1, s2.x2, s2.y2, r1.x1, r1.y1, r1.x2, r1.y2);
                     if (temp2) {
                         ray1.setAttribute('x2', temp2.x);
                         ray1.setAttribute('y2', temp2.y);
@@ -135,8 +148,8 @@
                         ray2.setAttribute('y2', r2.y2);
 
                     } else {
-                        ray1.setAttribute('x2', r1.x);
-                        ray1.setAttribute('y2', r1.y);
+                        ray1.setAttribute('x2', r1.x2);
+                        ray1.setAttribute('y2', r1.y2);
                     }
                 }
             }
@@ -200,8 +213,8 @@
     <line id="side2" x1="50" y1="10" x2="90" y2="10"></line>
 
     <line id="ray1" x1="50" y1="90" x2="50" y2="10"></line>
-    <line id="ray2" x1="50" y1="90" x2="50" y2="90"></line>
-    <line id="ray3" x1="50" y1="90" x2="50" y2="90"></line>
+    <line id="ray2" x1="50" y1="90" x2="50" y2="90" style="stroke: #F66" stroke-dasharray="2"></line>
+    <line id="ray3" x1="50" y1="90" x2="50" y2="90" style="stroke: #F99" stroke-dasharray="2"></line>
 </svg>
 
 </body>
