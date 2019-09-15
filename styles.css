@@ -139,6 +139,10 @@ ul {
     max-width: 100%;
 }
 
+.wbanner {
+    margin: 1rem 0;
+}
+
 #copy {
     clear: both;
     text-align: center;
