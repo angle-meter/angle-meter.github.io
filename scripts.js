@@ -1,4 +1,4 @@
-window.onload = function () {
+function init() {
     var svg = Snap('#svg');
 
     var SIZE = svg.attr('viewBox').width;
@@ -156,4 +156,4 @@ window.onload = function () {
     addInputListener();
     setAngle(Math.round(Math.random() * 360));
     // setAngle(330);
-};
+}
