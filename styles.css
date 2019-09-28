@@ -27,6 +27,10 @@ html, body {
     border-radius: 12px;
     border: solid 1px #CCC;
     box-shadow: 1px 1px 40px #CCC;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("img/michael-jackson.png");
+    background-size: contain;
 }
 
 #title {
