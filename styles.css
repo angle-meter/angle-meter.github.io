@@ -80,6 +80,10 @@ html, body {
     #input-panel {
         display: none;
     }
+
+    #svg-container {
+        padding: 10px;
+    }
 }
 
 /*Content*/
