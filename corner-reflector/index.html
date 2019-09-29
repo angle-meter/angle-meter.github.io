@@ -6,25 +6,44 @@
 </head>
 
 <style>
-    svg {
-        width: 500px;
-        height: 500px;
+    html, body {
+        width: 100%;
+        height: 100%;
+        font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
     }
 
-    .text {
-        font-size: 10px;
-        font-family: monospace;
-        fill: #666666;
-        text-anchor: middle;
+    * {
+        padding: 0;
+        margin: 0;
+        outline: none;
     }
-</style>
+
+    #svg-container {
+        padding: 20px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: relative;
+        text-align: center;
+    }
+
+    #svg {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        border-radius: 12px;
+        border: solid 1px #CCC;
+        box-shadow: 1px 1px 40px #CCC;
+    }</style>
+
 <script>
     window.onload = function () {
         const SIDE_CX = 50;
         const SIDE_CY = 10;
 
-        const SIDE_RX = 50;
-        const SIDE_RY = 90;
+        const RAY_CX = 50;
+        const RAY_CY = 90;
 
         const SIDE_LEN = 50;
 
@@ -63,10 +82,10 @@
             return {x, y}
         }
 
-        const s0 = {x1: SIDE_LEN, y1: SIDE_CY, x2: 0, y2: 0};
-        const s1 = {x1: SIDE_LEN, y1: 10, x2: 0, y2: 0};
-        const s2 = {x1: SIDE_LEN, y1: 10, x2: 0, y2: 0,};
-        const r1 = {x1: 50, y1: 90, x2: 0, y2: 0};
+        const s0 = {x1: SIDE_CX, y1: SIDE_CY, x2: 0, y2: 0};
+        const s1 = {x1: SIDE_CX, y1: 10, x2: 0, y2: 0};
+        const s2 = {x1: SIDE_CX, y1: 10, x2: 0, y2: 0,};
+        const r1 = {x1: RAY_CX, y1: RAY_CY, x2: 0, y2: 0};
         const r2 = {x1: 0, y1: 0, x2: 0, y2: 0};
         const r3 = {x1: 0, y1: 0, x2: 0, y2: 0};
 
@@ -76,7 +95,7 @@
         function recalc(x, y) {
             const angle = Math.atan2(y - SIDE_CY, x - SIDE_CX);
 
-            if (angle <= -Math.PI / 4 && angle >= -3 * Math.PI / 4) {
+            if (y <= SIDE_CY) {
                 cornerAngle = angle;
                 recalcSides();
                 recalcRays(r1.x2, r1.y2)
@@ -87,7 +106,7 @@
 
         function recalcSides() {
             s0.x2 = 10 * Math.cos(cornerAngle) + SIDE_CX;
-            s1.y2 = 10 * Math.sin(cornerAngle) + SIDE_CY;
+            s0.y2 = 10 * Math.sin(cornerAngle) + SIDE_CY;
             s1.x2 = SIDE_LEN * Math.cos(cornerAngle - a34) + s1.x1;
             s1.y2 = SIDE_LEN * Math.sin(cornerAngle - a34) + s1.y1;
             s2.x2 = SIDE_LEN * Math.cos(cornerAngle + a34) + s2.x1;
@@ -96,7 +115,7 @@
         }
 
         function recalcRays(x, y) {
-            const rayAngle = Math.atan2(y - 90, x - SIDE_CX);
+            const rayAngle = Math.atan2(y - RAY_CY, x - RAY_CX);
 
             r1.x2 = 100 * Math.cos(rayAngle) + r1.x1;
             r1.y2 = 100 * Math.sin(rayAngle) + r1.y1;
@@ -186,7 +205,13 @@
             ray3.setAttribute('y2', r3.y2);
         }
 
+        let dnd = false;
+        svg.addEventListener('mousedown', function (evt) {
+            dnd = true;
+        });
+
         svg.addEventListener('mouseup', function (evt) {
+                dnd = false;
                 point.x = evt.clientX;
                 point.y = evt.clientY;
                 const local = point.matrixTransform(svg.getScreenCTM().inverse());
@@ -195,7 +220,7 @@
         );
 
         svg.addEventListener('mousemove', function (evt) {
-                if (evt.ctrlKey) {
+                if (dnd) {
                     point.x = evt.clientX;
                     point.y = evt.clientY;
                     const local = point.matrixTransform(svg.getScreenCTM().inverse());
@@ -204,47 +229,55 @@
             }
         );
 
-        recalc(45, 0);
+        recalc(SIDE_CX, 0);
     }
 </script>
 <body>
 
-<svg id="svg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-    <style>
-        #side0, #side1, #side2 {
-            fill: none;
-            stroke: #000;
-            stroke-width: 1;
-        }
+<div id="svg-container" class="noselect">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" id="svg" viewBox="0 0 100 100" class="svg">
+        <style>
+            #side0, #side1, #side2 {
+                fill: none;
+                stroke: #000;
+                stroke-width: 1;
+            }
 
-        #ray1, #ray2, #ray3 {
-            fill: none;
-            stroke: #F00;
-            stroke-width: 1;
-        }
-    </style>
+            #ray1, #ray2, #ray3 {
+                fill: none;
+                stroke: #F00;
+                stroke-width: 1;
+                color: lightgreen;
+            }
+        </style>
 
-    <defs>
-        <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
-            <path d="M 10 0 L 0 0 0 10" fill="none" stroke="#DADADA" stroke-width="0.3"/>
-        </pattern>
-    </defs>
+        <defs>
+            <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                <path d="M 10 0 L 10 10 0 10" fill="none" stroke="#DADADA" stroke-width="0.3"/>
+            </pattern>
+        </defs>
 
-    <rect width="100%" height="100%" fill="url(#grid)"/>
+        <rect width="99" height="99" fill="url(#grid)"/>
 
-    <path d="M 50 10 L 60 0 L 40 0 Z"
-          fill="green" fill-opacity="0.25"
-          stroke-dasharray="1" stroke="gray" stroke-width="0.25" stroke-linejoin="round"
-          cursor="crosshair"/>
+        <path d="M 37 5
+        L 40 3 40 4 47 4
+        A 4 4 0 0 1 53 4
+        L 60 4 60 3 63 5
+        L 60 7 60 6 53 5
+        A 4 4 0 0 0 47 5
+        L 40 6 40 7  Z"
+              fill="lightgreen" opacity="0.5"
+              stroke="green" stroke-width="0.25" stroke-linejoin="round"
+              cursor="crosshair"/>
 
-    <line id="side0" x1="50" y1="10" x2="50" y2="10"></line>
-    <line id="side1" x1="50" y1="10" x2="10" y2="10" style="stroke: blue"></line>
-    <line id="side2" x1="50" y1="10" x2="90" y2="10"></line>
+        <line id="side0" x1="50" y1="10" x2="50" y2="10"></line>
+        <line id="side1" x1="50" y1="10" x2="10" y2="10"></line>
+        <line id="side2" x1="50" y1="10" x2="90" y2="10"></line>
 
-    <line id="ray1" x1="50" y1="90"></line>
-    <line id="ray2" style="stroke: #F66" stroke-dasharray="2"></line>
-    <line id="ray3" style="stroke: #F99" stroke-dasharray="2"></line>
-</svg>
-
+        <line id="ray1" x1="50" y1="90"></line>
+        <line id="ray2" style="stroke: #F66" stroke-dasharray="2"></line>
+        <line id="ray3" style="stroke: #F99" stroke-dasharray="2"></line>
+    </svg>
+</div>
 </body>
 </html>
