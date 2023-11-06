@@ -1,0 +1,52 @@
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #333;
+        color: #CCC;
+    }
+
+    .svg {
+        background-color: black;
+    }
+
+    .svg-aux-circle {
+        stroke: #888888;
+        stroke-width: 0.5;
+    }
+
+    .svg-aux-line {
+        stroke: #888888;
+        stroke-width: 0.5;
+    }
+
+    .svg-pointer-line {
+        stroke: #0088FF;
+    }
+
+    .svg-scale-text {
+        fill: #888;
+    }
+
+    .svg-scale-circle-outer {
+        stroke: #333;
+        stroke-width: 0.5;
+    }
+
+    .svg-scale-circle-middle {
+        stroke: #111;
+        stroke-width: 20;
+    }
+
+    .svg-scale-circle-inner {
+        stroke: #222;
+        stroke-width: 0.5;
+    }
+
+    .info img, .sample {
+        border: solid 1px #666;
+        border-radius: 5px;
+        box-shadow: 1px 1px 10px #111;
+    }
+    a {
+        color: #08F;
+    }
+}

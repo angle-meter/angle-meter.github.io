@@ -1,0 +1,42 @@
+{
+  "short_name": "Angle meter",
+  "name": "Angle meter mobile",
+  "description": "Measure angles using your smartphone. Mobile application protractor.",
+  "display": "fullscreen",
+  "id": "/",
+  "scope": "/",
+  "start_url": "/",
+  "theme_color": "#0088FF",
+  "background_color": "#FFFFFF",
+  "icons": [
+    {
+      "src": "/images/icons/icon-128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "/images/icons/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/images/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/screenshot-narrow.png",
+      "type": "image/png",
+      "sizes": "540x720",
+      "form_factor": "narrow"
+    },
+    {
+      "src": "/images/screenshots/screenshot-wide.png",
+      "type": "image/png",
+      "sizes": "720x540",
+      "form_factor": "wide"
+    }
+  ]
+}

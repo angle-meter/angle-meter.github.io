@@ -1,0 +1,283 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    font-size: 18px;
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+}
+
+/*app*/
+#box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: crosshair;
+}
+
+#angle-input-panel {
+    position: absolute;
+    top: 2%;
+    right: 2%;
+    max-width: 47%;
+    font-size: large;
+    line-height: 2em;
+}
+
+#accelerometer-panel {
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    max-width: 47%;
+    font-size: large;
+    line-height: 2em;
+}
+
+#angle-input {
+    font-size: inherit;
+    vertical-align: middle;
+    border: solid gray 1px;
+    padding: 0.5em;
+    width: 3em;
+}
+
+#angle-input:read-only {
+    background-color: lightgray;
+}
+
+#accelerometer-checkbox {
+    height: 2em;
+    width: 2em;
+    vertical-align: middle;
+}
+
+#accelerometer-checkbox:disabled + label {
+    color: lightgray;
+}
+
+#svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    shape-rendering: geometricPrecision;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('images/mj.png');
+    background-size: contain;
+}
+
+circle, line, text, path {
+    fill: none;
+    transform-origin: center;
+}
+
+.svg-animate {
+    transition: all 0.5s;
+}
+
+.svg-scale-circle-outer {
+    stroke: #CCC;
+    stroke-width: 0.5;
+}
+
+.svg-scale-circle-middle {
+    stroke: #DDD;
+    stroke-width: 20;
+}
+
+.svg-scale-circle-inner {
+    stroke: #CCC;
+    stroke-width: 0.5;
+}
+
+.svg-aux-circle, .svg-aux-line {
+    stroke: #39F;
+    stroke-width: 0.5;
+}
+
+.svg-aux-base-line {
+    stroke: black;
+    stroke-width: 1;
+}
+
+.svg-scale-text {
+    font-size: 12px;
+    font-family: Lucida Console, monospace;
+    fill: #333;
+    text-anchor: middle;
+    alignment-baseline: middle;
+    dominant-baseline: middle;
+}
+
+.svg-arc-circle, .svg-arc-opposite-circle {
+    stroke: #39F;
+    stroke-width: 50;
+}
+
+.svg-arc-opposite-circle {
+    stroke: #F00;
+}
+
+.svg-arc-text, .svg-arc-opposite-text {
+    font-size: 12px;
+    font-family: Lucida Console, monospace;
+    fill: black;
+    alignment-baseline: middle;
+    text-anchor: middle;
+}
+
+.svg-pointer-line {
+    stroke: black;
+}
+
+.svg-pointer-extra-line {
+    stroke: #39F;
+    stroke-dasharray: 6 6;
+    stroke-dashoffset: 5;
+}
+
+.svg-pointer-arrow {
+    fill: #39F;
+    fill-opacity: 0.75;
+    stroke: black;
+    stroke-width: 0.5;
+}
+
+/*text*/
+.content {
+    padding: 1rem 20%;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 2.25rem;
+    margin: 2rem 0 1rem 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    line-height: 1.75rem;
+    margin: 2rem 0 1rem 0;
+}
+
+h3 {
+    font-size: 1.25rem;
+    line-height: 1.5rem;
+    margin: 1rem 0;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    text-align: justify;
+    margin: 1rem 0;
+}
+
+p:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+ul {
+    list-style: inside;
+    line-height: 1.5rem;
+}
+
+ul.refs {
+    list-style: inside;
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+}
+
+.home-ref {
+    font-size: 1.25rem;
+    line-height: 2.5rem;
+}
+
+.info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.info p, .info img {
+    flex-grow: 1;
+    flex-basis: 50%;
+}
+
+.info img {
+    max-width: 50%;
+    padding: 1rem;
+    border: solid 1px #DDD;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #EEE;
+}
+
+.samples {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.sample {
+    padding: 1rem;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 1rem;
+    text-align: center;
+    border: solid 1px #DDD;
+    border-radius: 5px;
+    box-shadow: 1px 1px 10px #EEE;
+}
+
+.sample img {
+    width: 240px;
+    margin: 10px;
+}
+
+.sample h3, .sample p {
+    text-align: center;
+}
+
+#copy {
+    text-align: center;
+    padding: 1rem;
+}
+
+.adsbygoogle {
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .content {
+        padding: 1rem;
+    }
+
+    .info {
+        display: block;
+        text-align: center;
+    }
+
+    .info img {
+        max-width: 75%;
+    }
+}

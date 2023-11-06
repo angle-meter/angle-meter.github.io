@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://angle-meter.github.io/sitemap.txt

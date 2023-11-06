@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Mobile app internals</title>
+    <meta name="description" content="How to use accelerometer to measure angles">
+    <meta name="keywords" content="angles, measurement, mobile, accelerometer">
+    <meta name="author" content="Xantorohara">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="../styles.css?16">
+    <link rel="stylesheet" type="text/css" href="../styles-dark.css?10">
+
+    <link rel="stylesheet" href="highlight/github.min.css">
+    <script src="highlight/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1603159259588268"
+            crossorigin="anonymous"></script>
+</head>
+
+<body>
+<div class="content">
+    <h1>Mobile app internals</h1>
+    <p>This page describes how to measure angles using a phone's accelerometer.</p>
+</div>
+
+<!-- angle-meter-text -->
+<ins class="adsbygoogle" style="display:block"
+     data-ad-client="ca-pub-1603159259588268" data-ad-slot="8652921883" data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<div class="content">
+    <h2>Accelerometer</h2>
+    <p>
+        The core thing that provides information about the orientation of the smartphone is the Accelerometer sensor.
+        <br/>
+        Good references about sensors can be found here:
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Sensor_APIs" target="_blank">Sensor APIs</a>,
+        <a href="https://developer.mozilla.org/en-US/docs/Web/API/Accelerometer" target="_blank">Accelerometer</a> and
+        <a href="https://developer.chrome.com/en/articles/generic-sensor/" target="_blank">Sensors for the web</a>.
+    </p>
+    <p>
+        In this particular implementation, accessing the accelerometer from the JavaScript is quite simple:
+    </p>
+
+    <pre><code class="language-javascript">
+if ('Accelerometer' in window) {
+    try {
+        const accelerometer = new Accelerometer({frequency});
+        accelerometer.onerror = ({error}) => handleError(error);
+        accelerometer.onreading = () => handleValue(accelerometer);
+        accelerometer.start();
+        return accelerometer;
+    } catch (error) {
+        handleError(error);
+    }
+} else {
+    handleError({name: 'NotSupported'});
+}
+    </code></pre>
+    <p>
+        At the given frequency, the accelerometer triggers the "handleValue function and passes gravity values:
+    </p>
+
+    <pre><code class="language-javascript">
+const handleValue = ({x, y}) => {
+    const normalized = normalizeGravity(x, y);
+    const newDegrees = Math.atan2(normalized.y, normalized.x) * 180 / Math.PI;
+    if (Math.abs(newDegrees - degrees) > precision) {
+        degrees = newDegrees;
+        changeCallback(degrees);
+    }
+};
+    </code></pre>
+    <p>
+        Where "x" and "y" are values from -9.8 to 9.8, depends on how the device is rotated.
+    </p>
+    <img src="images/phone-xy.png" alt="Rotated phone" style="max-width: 100%">
+
+    <p>
+        In addition to the physical rotation, there is a logical orientation
+        (the screen can rotate automatically when you move a device between portrait and landscape orientation).
+        In this case it is necessary to invert gravity values to compensate screen rotation:
+    </p>
+
+    <pre><code class="language-javascript">
+const normalizeGravity = (x, y) => {
+    switch (screen.orientation.type) {
+        case 'portrait-secondary':
+            return {x: -x, y: -y};
+        case 'landscape-primary':
+            return {x: -y, y: x};
+        case 'landscape-secondary':
+            return {x: y, y: -x};
+        default:
+            return {x, y};
+    }
+};
+    </code></pre>
+    <p>
+        After that these "x" and "y" values can be converted to radians:
+        <code class="language-javascript">radians = Math.atan2(y, x)</code>,
+        and to degrees <code class="language-javascript">degrees = radians * 180 / Math.PI"</code>.
+        Then this angle is used to rotate the vector arrow in the SVG image:
+    </p>
+    <pre><code class="language-javascript">
+pointerLine.setAttribute('transform', `rotate(${-degrees})`);
+pointerMarker.setAttribute('transform', `rotate(${-degrees})`);
+    </code></pre>
+    <p>
+        Complete code can be found at
+        <a href="https://github.com/angle-meter/angle-meter.github.io" target="_blank">github</a>
+    </p>
+    <br/>
+    <br/>
+    <a href="/" class="home-ref">&slarr; Angle meter</a>
+</div>
+
+<div id="copy"> &copy; 2019-2023 <a href="mailto:xantorohara@gmail.com">Xantorohara</a></div>
+
+</body>
+</html>

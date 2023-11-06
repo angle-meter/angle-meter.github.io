@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Angle meter online</title>
+    <meta name="description"
+          content="Online and mobile angle measurement tool. Measure angles online in degrees from 0° to 360°.">
+    <meta name="keywords" content="angle, meter, protractor, degree, measure, online, mobile, accelerometer">
+    <meta name="author" content="Xantorohara">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="application-name" content="Protractor online">
+    <meta name="applicable-device" content="pc,mobile">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <meta property="og:title" content="Online angle meter">
+    <meta property="og:site_name" content="Angle meter">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://angle-meter.github.io/">
+    <meta property="og:image" content="https://angle-meter.github.io/images/screenshots/screenshot-wide.png">
+    <meta property="og:description"
+          content="This online protractor allows you to measure angles in degrees. Via an online angle meter by setting the angles manually. Or using a mobile angle meter that uses a built-in accelerometer to measure the tilt angle of the smartphone.">
+
+    <script name="schema:software-application" type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "Angle meter",
+            "applicationCategory": "Utilities",
+            "description": "Measure angles online in degrees from 0° to 360°",
+            "screenshot ": "https://angle-meter.github.io/images/screenshots/screenshot-wide.png",
+            "image ": "https://angle-meter.github.io/images/screenshots/screenshot-wide.png",
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": 4.9,
+                "reviewCount": 669
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": 0,
+                "category": "free"
+            }
+        }
+    </script>
+
+    <link rel="canonical" href="https://angle-meter.github.io/">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icons/icon-192.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="images/icons/icon-128.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/icons/favicon-16x16.png">
+
+    <link rel="stylesheet" type="text/css" href="styles.css?16">
+    <link rel="stylesheet" type="text/css" href="styles-dark.css?10">
+
+    <link rel="manifest" href="manifest.json">
+    <script src="index.js?5"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1603159259588268"
+            crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+<div id="box">
+    <svg id="svg" viewBox="0 0 360 360" class="svg noselect">
+        <circle class="svg-scale-circle-middle" cx="180" cy="180" r="168"/>
+        <circle class="svg-scale-circle-outer" cx="180" cy="180" r="178"/>
+        <circle class="svg-scale-circle-inner" cx="180" cy="180" r="158"/>
+
+        <text class="svg-scale-text" x="12" y="180">180</text>
+        <text class="svg-scale-text" x="348" y="175">0</text>
+        <text class="svg-scale-text" x="348" y="185">360</text>
+        <text class="svg-scale-text" x="180" y="12">90</text>
+        <text class="svg-scale-text" x="180" y="348">270</text>
+        <text class="svg-scale-text" x="300" y="62">45</text>
+        <text class="svg-scale-text" x="60" y="62">135</text>
+        <text class="svg-scale-text" x="60" y="298">225</text>
+        <text class="svg-scale-text" x="300" y="298">315</text>
+
+        <circle class="svg-aux-circle" cx="180" cy="180" r="150"/>
+        <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180"/>
+        <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180" transform="rotate(45)"/>
+        <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180" transform="rotate(90)"/>
+        <line class="svg-aux-line" x1="25" y1="180" x2="335" y2="180" transform="rotate(135)"/>
+        <line class="svg-aux-base-line" x1="180" y1="180" x2="335" y2="180"/>
+
+        <circle id="arc" class="svg-arc-circle svg-animate" cx="180" cy="180" r="100"
+                stroke-dasharray="628.32" stroke-dashoffset="-628.32" opacity="0.5"/>
+
+        <circle id="arcOpposite" class="svg-arc-opposite-circle svg-animate" cx="180" cy="180" r="50"
+                stroke-dasharray="314.16" stroke-dashoffset="314.16" opacity="0"/>
+
+        <line id="pointerExtraLine" class="svg-pointer-extra-line svg-animate" x1="-1000" y1="180" x2="1000" y2="180"/>
+        <line id="pointerLine" class="svg-pointer-line svg-animate" x1="25" y1="180" x2="320" y2="180"/>
+
+        <path id="pointerMarker" class="svg-pointer-arrow svg-animate" d="M320,180l4,-4l20,4l-20,4Z"/>
+        <text id="arcText" class="svg-arc-text svg-animate" x="280" y="180"/>
+        <text id="arcOppositeText" class="svg-arc-opposite-text svg-animate" x="230" y="180" opacity="0"/>
+    </svg>
+    <div id="accelerometer-panel">
+        <input id="accelerometer-checkbox" type="checkbox" disabled>
+        <label for="accelerometer-checkbox">Accelerometer</label>
+    </div>
+    <div id="angle-input-panel">
+        <label for="angle-input">Angle °</label>
+        <input id="angle-input" type="number" step="1">
+    </div>
+</div>
+
+<script>
+    init();
+</script>
+
+<!-- angle-meter-text -->
+<ins class="adsbygoogle" style="display:block"
+     data-ad-client="ca-pub-1603159259588268" data-ad-slot="8652921883" data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<div class="content">
+    <h1>Angle meter</h1>
+
+    <h2>Online angle meter</h2>
+    <p>
+        If you want to measure angles, but you don't have a protractor at hand,
+        you can take measurements using this online angle meter.
+        You don't need to install any protractor applications on your smartphone or computer
+        because this online tool simply works in a browser.
+        It is possible to measure right, acute and obtuse angles in degrees from 0° to 360°
+        using the angle meter online.
+    </p>
+
+    <h2>Mobile angle meter</h2>
+    <p>
+        Being launched on a smartphone or tablet,
+        the application uses the capabilities of the built-in accelerometer to determine the tilt of the device.
+        So you can just rotate the mobile phone to measure the angle of inclination.
+        To use it similarly to a native mobile app, you can add a shortcut via the menu item "Add to Home Screen" or
+        "Add to Phone" in the browser.
+        <br/>
+        Without a phone, you can still use the protractor online, setting the angles manually with mouse clicks,
+        scrolling the mouse wheel, or simply entering the angle in the text input.
+        <br/>
+        If you want to know how the mobile protractor is implemented you can see details <a href="mobile-app/"> here</a>.
+    </p>
+
+    <h2>Online protractor</h2>
+    <p>
+        The instrument for measuring angles has its own special name - a protractor.
+        It is a round or semicircular tool for measuring or drawing angles on paper.
+        But sometimes a protractor is needed in everyday life.
+        For example, to divide a pizza into equal parts, to hang a picture exactly,
+        or to find out the angle of inclination of a satellite plate.
+        The phone is always with you, you can use it for this.
+    </p>
+
+    <h2>Angle maker</h2>
+    <p>
+        With this tool, you can make any angle with an accuracy of one degree.
+        Just enter the angle value into the input field in the upper right corner.
+        Mouse wheel over the protractor area also increments or decrements the angle with one degree precision.
+        Before creating the angle you want, you need to turn off the accelerometer (if it was turned on) via the
+        checkbox in the left upper corner.
+    </p>
+</div>
+
+<!-- angle-meter-text -->
+<ins class="adsbygoogle" style="display:block"
+     data-ad-client="ca-pub-1603159259588268" data-ad-slot="8652921883" data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<div class="content">
+    <h2>Real angle meters</h2>
+    <p>
+        Virtual tool is useful occasionally, mostly for fun.
+        In the real life, in professional work people use real instruments.
+    </p>
+
+    <h3>School protractor</h3>
+
+    <div class="info">
+        <p> At school, everyone had such a transparent plastic protractor for measuring angles. </p>
+        <img src="images/devices/plastic-protractor.jpg" alt="Plastic protractor">
+    </div>
+
+    <h3>Bubble level angle meter</h3>
+    <div class="info">
+        <p>
+            The core of this tool is liquid with a bubble in a glass vial.
+            You just need to centre the bubble between the divisions on the vial.
+            Arrow connected with the vial will indicate the measured angle.
+            It is easy to use with accuracy to within plus or minus 1 degree.
+        </p>
+        <img src="images/devices/bubble-level.jpg" alt="Bubble level protractor">
+    </div>
+
+    <h3>Stainless steel protractor</h3>
+    <div class="info">
+        <p>
+            Steel protractor is useful for setting bevels, transferring angles, architectural design or engineering
+            drawing.
+            It consists of a body with graduations from 0 to 180 degrees and a blade that can be locked at any angle.
+        </p>
+        <img src="images/devices/steel-tool.jpg" alt="Steel protractor">
+    </div>
+
+    <h3>Digital ruler-based angle meter</h3>
+    <div class="info">
+        <p>
+            It has two stainless steel rulers and a digital angle sensor with a display runs on a battery.
+            You can easily and accurately measure angles and lengths.
+        </p>
+        <img src="images/devices/digital-rulers.jpg" alt="Digital angle meter">
+    </div>
+
+    <h3>Electronic inclinometer</h3>
+    <div class="info">
+        <p>
+            Typically it is a portable battery powered device with a display and inclinometer sensors.
+            Professional digital inclinometers guarantee excellent precision in measuring angles.
+            Marketplaces offer different devices that provide high accuracy angle measurement at a reasonable cost.
+        </p>
+        <img src="images/devices/inclinometer.jpg" alt="Electronic angle meter">
+    </div>
+
+    <h3>Smartphone app</h3>
+    <div class="info">
+        <p>
+            There are some amazing smartphone applications to measure angles.
+            Nowadays smartphones can identify their orientation using an accelerator, an integrated micro device with
+            axis-based motion sensing.
+            This information can be used by the apps to determine the angle at which a device is tilted with respect to
+            the Earth, or calculate the angle between two positions of the mobile device.
+            Another approach to measure angles via smartphone is based on image and photo analysis.
+            You can just take a picture with camera or from gallery, and then measure angles and lengths.
+        </p>
+        <img src="images/devices/smartphone.jpg" alt="Smartphone protractor">
+    </div>
+</div>
+
+<!-- angle-meter-text -->
+<ins class="adsbygoogle" style="display:block"
+     data-ad-client="ca-pub-1603159259588268" data-ad-slot="8652921883" data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<div class="content">
+    <h2>Types of angles</h2>
+
+    <div class="samples">
+        <div class="sample">
+            <h3>Zero angle</h3>
+            <img src="images/samples/angle-000.png" alt="Zero angle 0 degrees">
+            <p>An angle equal to 0°</p>
+        </div>
+        <div class="sample">
+            <h3>Right angle</h3>
+            <img src="images/samples/angle-090.png" alt="Right angle 90 degrees">
+            <p>An angle equal to 90° (it is formed by two perpendicular lines)</p>
+        </div>
+        <div class="sample">
+            <h3>Straight angle</h3>
+            <img src="images/samples/angle-180.png" alt="Straight angle 180 degrees">
+            <p>An angle equal to 180° (it is just a line)</p>
+        </div>
+        <div class="sample">
+            <h3>Full angle</h3>
+            <img src="images/samples/angle-360.png" alt="Full angle 360 degrees">
+            <p>An angle equal to 360° (or full turn)</p>
+        </div>
+        <div class="sample">
+            <h3>Acute angle</h3>
+            <img src="images/samples/angle-060.png" alt="Acute angle 60 degrees">
+            <p>An angle between 0° and 90° (larger than the Zero, but smaller than the Right angle)</p>
+        </div>
+        <div class="sample">
+            <h3>Obtuse angle</h3>
+            <img src="images/samples/angle-120.png" alt="Obtuse angle 120 degrees">
+            <p>An angle between 90° and 180° (larger than the Right, but smaller than the Straight angle)</p>
+        </div>
+        <div class="sample">
+            <h3>Reflex angle</h3>
+            <img src="images/samples/angle-225.png" alt="Reflex angle 225 degrees">
+            <img src="images/samples/angle-330.png" alt="Reflex angle 330 degrees">
+            <p>
+                An angle between 180° and 360° (larger than the Straight, but smaller than the Full angle)
+                <br/>
+                Sometimes it is simpler to work with a negative angle instead of the Reflex angle (see angles in red).
+                <br/>
+                For example, an orientation represented as 225° is equivalent to -135°.
+                Or, an orientation represented as 330° is equivalent to -30°.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- angle-meter-text -->
+<ins class="adsbygoogle" style="display:block"
+     data-ad-client="ca-pub-1603159259588268" data-ad-slot="8652921883" data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+
+<div class="content">
+    <h2>Angle units</h2>
+
+    <p>
+        Full turn can be divided into pieces of the same size.
+        The most common unit of measurement is the degree (and smaller fractions of the degree).
+    </p>
+    <ul>
+        <li>Degree = 1/360 of full turn. Sign of the degree is <b>°</b>
+        <li>Minute = 1/60 of the degree. Sign of the minute is <b>'</b></li>
+        <li>Second = 1/60 of the minute. Sign of the second is <b>"</b></li>
+    </ul>
+    <p> For example: 35 degrees 5 minutes 27 seconds is written as <b>35° 5' 27"</b></p>
+    <div class="samples">
+        <div class="sample">
+            <h3>Degree</h3>
+            <img src="images/samples/units-360.png" alt="Clock position">
+            <p>
+                Degree is 1/360 of a turn, or 1°
+                <br/>
+                Full turn contains 360 degrees.
+                <br/>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        Also there are other types of division - circular sectors.
+        Sectors of a certain size have their own special names.
+    </p>
+    <div class="samples">
+        <div class="sample">
+            <h3>Quadrant</h3>
+            <img src="images/samples/units-004.png" alt="Quadrant">
+            <p>
+                Quadrant is 1/4 of a turn, or 90°
+                <br/>
+                Full turn contains 4 quadrants.
+            </p>
+        </div>
+        <div class="sample">
+            <h3>Sextant</h3>
+            <img src="images/samples/units-006.png" alt="Sextant">
+            <p>
+                Sextant is 1/6 of a turn, or 60°
+                <br/>
+                Full turn contains 6 sextants.
+            </p>
+        </div>
+        <div class="sample">
+            <h3>Octant</h3>
+            <img src="images/samples/units-008.png" alt="Octant">
+            <p>
+                Octant is 1/8 of a turn, or 45°
+                <br/>
+                Full turn contains 8 octant.
+            </p>
+        </div>
+
+        <div class="sample">
+            <h3>Clock position</h3>
+            <img src="images/samples/units-012.png" alt="Clock position">
+            <p>
+                Clock position is 1/12 of a turn, or 30°
+                <br/>
+                Full turn contains 12 positions.
+            </p>
+        </div>
+    </div>
+    <h2>See also</h2>
+    <ul class="refs">
+        <li><a href="interesting-angles/">Interesting angles</a></li>
+        <li><a href="angle-facts/">Facts about angles</a></li>
+        <li><a href="mobile-app/">Mobile app internals</a></li>
+    </ul>
+</div>
+<div id="copy"> &copy; 2019-2023 <a href="mailto:xantorohara@gmail.com">Xantorohara</a></div>
+
+</body>
+</html>
